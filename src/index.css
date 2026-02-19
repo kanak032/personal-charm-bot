@@ -2,70 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;600;700&display=swap');
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================================
+   IIST College Design System — All colors in HSL
+   ============================================================ */
 
 @layer base {
   :root {
-    /* Jarvis Dark Theme */
-    --background: 220 40% 4%;
-    --foreground: 195 100% 90%;
+    /* Primary: Deep Purple (IIST brand) */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 15%;
 
-    --card: 220 35% 7%;
-    --card-foreground: 195 80% 85%;
+    --card: 0 0% 98%;
+    --card-foreground: 240 10% 15%;
 
-    --popover: 220 35% 7%;
-    --popover-foreground: 195 80% 85%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 15%;
 
-    --primary: 188 100% 50%;
-    --primary-foreground: 220 40% 4%;
+    --primary: 276 72% 35%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 30% 12%;
-    --secondary-foreground: 195 60% 80%;
+    --secondary: 276 30% 92%;
+    --secondary-foreground: 276 72% 30%;
 
-    --muted: 220 30% 10%;
-    --muted-foreground: 215 30% 55%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
 
-    --accent: 200 100% 60%;
-    --accent-foreground: 220 40% 4%;
+    --accent: 276 72% 35%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 188 60% 20%;
-    --input: 220 30% 12%;
-    --ring: 188 100% 50%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 276 72% 35%;
 
-    --radius: 0.25rem;
+    --radius: 0.375rem;
 
-    /* Custom Jarvis tokens */
-    --glow-primary: 188 100% 50%;
-    --glow-secondary: 200 100% 60%;
-    --surface-glass: 220 35% 8%;
-    --surface-border: 188 60% 18%;
+    /* Custom college tokens */
+    --college-purple: 276 72% 35%;
+    --college-purple-light: 276 50% 95%;
+    --college-gold: 43 96% 50%;
+    --college-maroon: 340 70% 30%;
+    --college-nav-bg: 276 72% 28%;
+    --college-header-bg: 0 0% 100%;
 
-    --sidebar-background: 220 40% 5%;
-    --sidebar-foreground: 195 80% 85%;
-    --sidebar-primary: 188 100% 50%;
-    --sidebar-primary-foreground: 220 40% 4%;
-    --sidebar-accent: 220 30% 12%;
-    --sidebar-accent-foreground: 195 60% 80%;
-    --sidebar-border: 188 60% 18%;
-    --sidebar-ring: 188 100% 50%;
+    --sidebar-background: 276 72% 28%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 276 72% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 276 50% 40%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 276 40% 40%;
+    --sidebar-ring: 276 72% 50%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 40% 4%) 0%, hsl(215 50% 8%) 50%, hsl(188 40% 6%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(220 35% 7%) 0%, hsl(215 40% 10%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(188 100% 50% / 0.15) 0%, transparent 70%);
-    --gradient-primary: linear-gradient(90deg, hsl(188 100% 50%), hsl(200 100% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(276 72% 28%) 0%, hsl(276 60% 35%) 50%, hsl(276 80% 25%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(276 30% 97%) 100%);
 
-    /* Shadows/Glows */
-    --shadow-glow: 0 0 20px hsl(188 100% 50% / 0.4), 0 0 60px hsl(188 100% 50% / 0.15);
-    --shadow-card: 0 4px 30px hsl(188 100% 50% / 0.08), 0 1px 0 hsl(188 60% 20% / 0.5);
-    --shadow-text: 0 0 20px hsl(188 100% 50% / 0.8);
+    /* Shadows */
+    --shadow-card: 0 2px 12px hsl(276 72% 35% / 0.1), 0 1px 3px hsl(0 0% 0% / 0.05);
+    --shadow-nav: 0 2px 8px hsl(0 0% 0% / 0.15);
   }
 }
 
@@ -76,135 +75,108 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Exo 2', sans-serif;
-    background: var(--gradient-hero);
+    font-family: 'Open Sans', sans-serif;
     min-height: 100vh;
   }
 
-  h1, h2, h3 {
-    font-family: 'Orbitron', monospace;
+  h1, h2, h3, h4 {
+    font-family: 'Roboto Slab', serif;
   }
 }
 
 /* Custom utility classes */
 @layer utilities {
-  .font-orbitron {
-    font-family: 'Orbitron', monospace;
+  .font-college-heading {
+    font-family: 'Roboto Slab', serif;
   }
-  .font-mono-tech {
-    font-family: 'Share Tech Mono', monospace;
+  .font-college-serif {
+    font-family: 'Merriweather', serif;
   }
-  .font-exo {
-    font-family: 'Exo 2', sans-serif;
-  }
-
-  .glow-text {
-    text-shadow: var(--shadow-text);
+  .font-college-body {
+    font-family: 'Open Sans', sans-serif;
   }
 
-  .glow-box {
-    box-shadow: var(--shadow-glow);
-  }
-
-  .glass-card {
-    background: var(--gradient-card);
-    border: 1px solid hsl(var(--surface-border));
+  .college-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
     box-shadow: var(--shadow-card);
-    backdrop-filter: blur(12px);
+    border-radius: var(--radius);
   }
 
-  .scan-line {
-    position: relative;
-    overflow: hidden;
+  .college-divider {
+    border-left: 4px solid hsl(var(--college-purple));
+    padding-left: 0.75rem;
   }
 
-  .scan-line::after {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
-    animation: scan 3s linear infinite;
+  .news-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: hsl(var(--college-purple));
+    flex-shrink: 0;
+    margin-top: 6px;
   }
 
-  @keyframes scan {
-    0% { top: -2px; }
-    100% { top: 100%; }
+  .top-bar-stripe {
+    background: hsl(var(--college-purple));
   }
 
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 10px hsl(188 100% 50% / 0.3), 0 0 30px hsl(188 100% 50% / 0.1); }
-    50% { box-shadow: 0 0 20px hsl(188 100% 50% / 0.6), 0 0 60px hsl(188 100% 50% / 0.25); }
+  .nav-bar {
+    background: hsl(var(--college-nav-bg));
+    box-shadow: var(--shadow-nav);
   }
 
-  @keyframes rotate-ring {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  .hero-band {
+    background: var(--gradient-hero);
   }
 
-  @keyframes rotate-ring-reverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
+  .section-label {
+    font-family: 'Roboto Slab', serif;
+    color: hsl(var(--college-purple));
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 3px solid hsl(var(--college-purple));
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
   }
 
-  @keyframes flicker {
-    0%, 100% { opacity: 1; }
-    92% { opacity: 1; }
-    93% { opacity: 0.8; }
-    94% { opacity: 1; }
-    96% { opacity: 0.9; }
-    97% { opacity: 1; }
+  .tag-chip {
+    background: hsl(var(--college-purple-light));
+    color: hsl(var(--college-purple));
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
-  @keyframes data-stream {
-    0% { transform: translateY(-100%); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(100%); opacity: 0; }
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes breath {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.02); }
-  }
-
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  .animate-rotate-ring {
-    animation: rotate-ring 8s linear infinite;
-  }
-
-  .animate-rotate-ring-reverse {
-    animation: rotate-ring-reverse 12s linear infinite;
-  }
-
-  .animate-flicker {
-    animation: flicker 4s ease-in-out infinite;
-  }
-
-  .animate-breath {
-    animation: breath 3s ease-in-out infinite;
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out both;
   }
 }
 
-/* N8N Chat Widget Overrides */
+/* N8N Chat Widget Overrides — matches college purple */
 .n8n-chat-widget {
-  --chat--color-primary: hsl(188, 100%, 50%);
-  --chat--color-primary-shade-50: hsl(188, 100%, 45%);
-  --chat--color-primary-shade-100: hsl(188, 100%, 40%);
-  --chat--color-secondary: hsl(200, 100%, 60%);
-  --chat--color-white: hsl(195, 80%, 95%);
-  --chat--color-light: hsl(220, 35%, 12%);
-  --chat--color-light-shade-50: hsl(220, 35%, 15%);
-  --chat--color-light-shade-100: hsl(220, 35%, 18%);
-  --chat--color-medium: hsl(215, 30%, 45%);
-  --chat--color-dark: hsl(220, 40%, 4%);
-  --chat--color-disabled: hsl(215, 20%, 35%);
-  --chat--color-typing: hsl(188, 100%, 50%);
+  --chat--color-primary: hsl(276, 72%, 35%);
+  --chat--color-primary-shade-50: hsl(276, 72%, 30%);
+  --chat--color-primary-shade-100: hsl(276, 72%, 25%);
+  --chat--color-secondary: hsl(43, 96%, 50%);
+  --chat--color-white: hsl(0, 0%, 100%);
+  --chat--color-light: hsl(276, 30%, 95%);
+  --chat--color-light-shade-50: hsl(276, 20%, 92%);
+  --chat--color-light-shade-100: hsl(276, 20%, 88%);
+  --chat--color-medium: hsl(220, 10%, 55%);
+  --chat--color-dark: hsl(240, 10%, 15%);
+  --chat--color-disabled: hsl(220, 10%, 70%);
+  --chat--color-typing: hsl(276, 72%, 35%);
   --chat--header-height: auto;
   --chat--spacing: 1rem;
   --chat--border-radius: 0.5rem;
@@ -215,26 +187,26 @@ All colors MUST be HSL.
   --chat--message--padding: 0.75rem 1rem;
   --chat--message--border-radius: 0.5rem;
   --chat--message-line-height: 1.6;
-  --chat--message--bot--background: hsl(220, 35%, 9%);
-  --chat--message--bot--color: hsl(195, 80%, 85%);
-  --chat--message--bot--border: 1px solid hsl(188, 60%, 20%);
-  --chat--message--user--background: hsl(188, 80%, 20%);
-  --chat--message--user--color: hsl(195, 100%, 95%);
-  --chat--message--pre--background: hsl(220, 35%, 7%);
-  --chat--toggle--background: hsl(188, 100%, 50%);
-  --chat--toggle--hover--background: hsl(188, 100%, 45%);
-  --chat--toggle--active--background: hsl(188, 100%, 40%);
-  --chat--toggle--color: hsl(220, 40%, 4%);
+  --chat--message--bot--background: hsl(276, 30%, 97%);
+  --chat--message--bot--color: hsl(240, 10%, 15%);
+  --chat--message--bot--border: 1px solid hsl(276, 30%, 88%);
+  --chat--message--user--background: hsl(276, 72%, 35%);
+  --chat--message--user--color: hsl(0, 0%, 100%);
+  --chat--message--pre--background: hsl(276, 20%, 96%);
+  --chat--toggle--background: hsl(276, 72%, 35%);
+  --chat--toggle--hover--background: hsl(276, 72%, 28%);
+  --chat--toggle--active--background: hsl(276, 72%, 22%);
+  --chat--toggle--color: hsl(0, 0%, 100%);
   --chat--toggle--size: 60px;
-  --chat--header--background: hsl(220, 40%, 5%);
-  --chat--header--color: hsl(188, 100%, 50%);
-  --chat--header--border-bottom: 1px solid hsl(188, 60%, 20%);
-  --chat--input--background: hsl(220, 35%, 8%);
-  --chat--input--placeholder--color: hsl(215, 30%, 45%);
-  --chat--input--border-color-active: hsl(188, 100%, 50%);
-  --chat--window--background: hsl(220, 40%, 4%);
-  --chat--window--border: 1px solid hsl(188, 60%, 20%);
-  --chat--window--box-shadow: 0 0 40px hsl(188 100% 50% / 0.2);
-  --chat--footer--background: hsl(220, 40%, 5%);
-  --chat--footer--border-top: 1px solid hsl(188, 60%, 20%);
+  --chat--header--background: hsl(276, 72%, 28%);
+  --chat--header--color: hsl(0, 0%, 100%);
+  --chat--header--border-bottom: 1px solid hsl(276, 40%, 40%);
+  --chat--input--background: hsl(0, 0%, 100%);
+  --chat--input--placeholder--color: hsl(220, 10%, 60%);
+  --chat--input--border-color-active: hsl(276, 72%, 35%);
+  --chat--window--background: hsl(0, 0%, 100%);
+  --chat--window--border: 1px solid hsl(276, 30%, 80%);
+  --chat--window--box-shadow: 0 8px 40px hsl(276 72% 35% / 0.2);
+  --chat--footer--background: hsl(276, 30%, 97%);
+  --chat--footer--border-top: 1px solid hsl(276, 20%, 88%);
 }
