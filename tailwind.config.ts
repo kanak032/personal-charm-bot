@@ -47,9 +47,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        jarvis: {
-          glow: "hsl(var(--glow-primary))",
-          surface: "hsl(var(--surface-glass))",
+        college: {
+          purple: "hsl(var(--college-purple))",
+          "purple-light": "hsl(var(--college-purple-light))",
+          gold: "hsl(var(--college-gold))",
+          maroon: "hsl(var(--college-maroon))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -69,20 +71,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {

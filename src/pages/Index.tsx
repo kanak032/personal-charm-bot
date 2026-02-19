@@ -1,277 +1,352 @@
-import { useEffect, useState } from "react";
-import JarvisRing from "@/components/JarvisRing";
-import StatCard from "@/components/StatCard";
 import N8NChatWidget from "@/components/N8NChatWidget";
-import heroImage from "@/assets/jarvis-hero.jpg";
 
-const TYPING_LINES = [
-  "Initializing personal AI agent...",
-  "Neural networks online.",
-  "Ready to assist.",
+const NEWS_ITEMS = [
+  "Student wins National AI Hackathon 2025 — 1st Prize",
+  "IIST Indore Signs MoU with leading Tech Giants for Research Collaboration",
+  "Annual Tech Fest 'TECHNOVA 2025' — Registrations Open",
+  "Placement Drive: 95% Placement Record Achieved — Batch 2025",
+  "New Research Lab Inaugurated by Honourable Vice Chancellor",
+  "International Conference on Emerging Technologies — Call for Papers",
 ];
 
-const TypingText = ({ text }: { text: string }) => {
-  const [displayed, setDisplayed] = useState("");
-  const [done, setDone] = useState(false);
+const RECENT_POSTS = [
+  "AI-Powered C++ Programming Assessment Using ScratchBox",
+  "10 Teams Secure Place in Grand Finale of National-Level Hackathons",
+  "Faculty Empowered with Advanced MATLAB & Simulink Training",
+  "INDUCTION 2025: Welcome B.Tech and MBA Batch 2025",
+  "Internal Hackathon: Fostering Innovation for Smart India Hackathon",
+];
 
-  useEffect(() => {
-    setDisplayed("");
-    setDone(false);
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        setDisplayed(text.slice(0, i + 1));
-        i++;
-      } else {
-        setDone(true);
-        clearInterval(interval);
-      }
-    }, 40);
-    return () => clearInterval(interval);
-  }, [text]);
+const QUICK_LINKS = [
+  "Academic Calendar",
+  "Examination Schedule",
+  "Fee Payment Portal",
+  "Library Resources",
+  "Placement Cell",
+  "Research & Innovation",
+  "Hostel Facilities",
+  "Student Grievance",
+];
 
-  return (
-    <span>
-      {displayed}
-      {!done && <span className="animate-pulse text-primary">▊</span>}
-    </span>
-  );
-};
+const PROGRAMS = [
+  { name: "B.Tech Computer Science", duration: "4 Years", seats: "120" },
+  { name: "B.Tech Electronics & Communication", duration: "4 Years", seats: "60" },
+  { name: "B.Tech Mechanical Engineering", duration: "4 Years", seats: "60" },
+  { name: "MBA — Business Analytics", duration: "2 Years", seats: "60" },
+];
 
 const STATS = [
-  {
-    icon: "🤖",
-    label: "Agent Mode",
-    value: "JARVIS v1.0",
-    description: "Personal AI assistant powered by N8N workflows",
-  },
-  {
-    icon: "⚡",
-    label: "Response Time",
-    value: "< 2 seconds",
-    description: "Real-time intelligent responses, always on standby",
-  },
-  {
-    icon: "🧠",
-    label: "Intelligence",
-    value: "Multi-Model",
-    description: "Leveraging advanced LLMs for deep reasoning",
-  },
-  {
-    icon: "🔐",
-    label: "Security",
-    value: "Encrypted",
-    description: "End-to-end secure conversations & data handling",
-  },
-];
-
-const CAPABILITIES = [
-  { label: "Research & Analysis", level: 90 },
-  { label: "Task Automation", level: 85 },
-  { label: "Scheduling & Planning", level: 78 },
-  { label: "Code Assistance", level: 92 },
+  { value: "5000+", label: "Students Enrolled" },
+  { value: "200+", label: "Faculty Members" },
+  { value: "95%", label: "Placement Rate" },
+  { value: "150+", label: "Industry Partners" },
 ];
 
 const Index = () => {
-  const [bootLine, setBootLine] = useState(0);
-  const [booted, setBooted] = useState(false);
-
-  useEffect(() => {
-    if (bootLine < TYPING_LINES.length - 1) {
-      const t = setTimeout(() => setBootLine((b) => b + 1), 1800);
-      return () => clearTimeout(t);
-    } else {
-      const t = setTimeout(() => setBooted(true), 1800);
-      return () => clearTimeout(t);
-    }
-  }, [bootLine]);
-
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      {/* Background grid pattern */}
-      <div className="fixed inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(hsl(188 100% 50% / 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(188 100% 50% / 0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-        }} />
+    <div className="min-h-screen bg-background font-college-body">
 
-      {/* Background hero image overlay */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <img
-          src={heroImage}
-          alt="JARVIS background"
-          className="w-full h-full object-cover opacity-10"
-        />
-        <div className="absolute inset-0"
-          style={{ background: 'linear-gradient(to bottom, hsl(220 40% 4% / 0.3) 0%, hsl(220 40% 4%) 80%)' }} />
+      {/* Top bar */}
+      <div className="top-bar-stripe text-white text-xs py-1.5">
+        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+          <span>Affiliated to RGPV | NAAC Accredited Institution</span>
+          <div className="hidden md:flex items-center gap-4">
+            <span>📞 +91-731-XXXXXXXX</span>
+            <span>✉ info@iist.ac.in</span>
+          </div>
+        </div>
       </div>
 
-      {/* Header / Nav */}
-      <header className="relative z-10 border-b border-primary/20"
-        style={{ background: 'hsl(220 40% 4% / 0.9)', backdropFilter: 'blur(20px)' }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full border border-primary animate-pulse-glow flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full bg-primary" style={{ boxShadow: '0 0 8px hsl(188 100% 50%)' }} />
+      {/* Header */}
+      <header className="bg-white border-b border-border shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center gap-4">
+          {/* Logo & Title */}
+          <div className="flex items-center gap-4">
+            <div
+              className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0"
+              style={{ background: 'hsl(276 72% 35%)' }}
+            >
+              II
             </div>
-            <span className="font-orbitron text-primary text-lg font-bold glow-text tracking-widest">JARVIS</span>
-            <span className="font-mono-tech text-muted-foreground text-xs">// PERSONAL AGENT</span>
+            <div>
+              <h1 className="font-college-heading text-xl md:text-2xl font-bold leading-tight"
+                style={{ color: 'hsl(276 72% 28%)' }}>
+                Indian Institute of Information Science & Technology
+              </h1>
+              <p className="text-sm text-muted-foreground font-college-body mt-0.5">
+                IIST Indore — Excellence in Education & Research
+              </p>
+              <div className="flex gap-2 mt-1">
+                <span className="tag-chip">NAAC Accredited</span>
+                <span className="tag-chip">AICTE Approved</span>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-6">
-            <div className="hidden md:flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="font-mono-tech text-xs text-primary">ONLINE</span>
-            </div>
-            <div className="font-mono-tech text-xs text-muted-foreground hidden md:block">
-              {new Date().toLocaleTimeString('en-US', { hour12: false })}
-            </div>
+
+          {/* Right side */}
+          <div className="md:ml-auto flex flex-col items-end gap-2">
+            <button
+              onClick={() => {
+                const el = document.querySelector('.n8n-chat-toggle') as HTMLButtonElement;
+                if (el) el.click();
+              }}
+              className="flex items-center gap-2 px-4 py-2 rounded text-white text-sm font-semibold transition-all duration-200 hover:opacity-90"
+              style={{ background: 'hsl(276 72% 35%)' }}
+            >
+              <span>🤖</span>
+              <span>Ask JARVIS AI</span>
+            </button>
+            <p className="text-xs text-muted-foreground">Your personal campus AI assistant</p>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* Nav */}
+      <nav className="nav-bar text-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <ul className="flex flex-wrap gap-0 text-sm font-semibold">
+            {["Home", "About", "Academics", "Admissions", "Research", "Faculty", "Students", "Placements", "Contact"].map((item) => (
+              <li key={item}>
+                <a
+                  href="#"
+                  className="block px-4 py-3 hover:bg-white/20 transition-colors duration-150 tracking-wide"
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
 
-          {/* Left — Text */}
-          <div className="space-y-8">
-            {/* Boot sequence */}
-            <div className="glass-card rounded-lg p-4 font-mono-tech text-xs space-y-1">
-              {TYPING_LINES.slice(0, bootLine + 1).map((line, i) => (
-                <div key={i} className={i === bootLine ? "text-primary" : "text-muted-foreground"}>
-                  <span className="text-accent mr-2">›</span>
-                  {i === bootLine ? <TypingText text={line} /> : line}
-                </div>
-              ))}
+      {/* Ticker */}
+      <div className="bg-yellow-50 border-b border-yellow-200 py-2 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 flex items-center gap-3">
+          <span
+            className="flex-shrink-0 text-white text-xs font-bold px-3 py-1 rounded"
+            style={{ background: 'hsl(43 96% 50%)', color: 'hsl(240 10% 15%)' }}
+          >
+            NEWS
+          </span>
+          <div className="overflow-hidden flex-1">
+            <p className="text-sm text-yellow-900 animate-fade-in-up">
+              {NEWS_ITEMS[Math.floor(Date.now() / 5000) % NEWS_ITEMS.length]}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Banner */}
+      <div className="hero-band text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <div
+              className="inline-block text-xs font-semibold px-3 py-1 rounded"
+              style={{ background: 'hsl(43 96% 50%)', color: 'hsl(240 10% 15%)' }}
+            >
+              Admissions Open 2025-26
             </div>
-
-            <div className="space-y-4">
-              <div className="font-mono-tech text-primary text-sm tracking-widest uppercase animate-flicker">
-                — Hello, I'm your
-              </div>
-              <h1 className="font-orbitron text-6xl md:text-7xl font-black text-primary glow-text leading-none animate-flicker">
-                JARVIS
-              </h1>
-              <h2 className="font-orbitron text-2xl md:text-3xl font-light text-foreground/80 tracking-wide">
-                Personal AI Agent
-              </h2>
-              <p className="font-exo text-foreground/60 text-lg leading-relaxed max-w-lg">
-                An intelligent assistant built to automate, research, and assist with anything you need.
-                Powered by advanced AI workflows — always on, always ready.
-              </p>
-            </div>
-
+            <h2 className="font-college-heading text-3xl md:text-4xl font-bold leading-tight">
+              Shaping Future Leaders in Technology & Innovation
+            </h2>
+            <p className="text-white/80 text-base leading-relaxed max-w-lg">
+              IIST Indore is a premier institution offering world-class education in engineering, technology, and management. With state-of-the-art infrastructure and industry-focused curriculum, we prepare students for the challenges of tomorrow.
+            </p>
             <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 glass-card">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="font-mono-tech text-xs text-primary">SYSTEM ACTIVE</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 glass-card">
-                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" style={{ animationDelay: '0.5s' }} />
-                <span className="font-mono-tech text-xs text-accent">N8N CONNECTED</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-border glass-card">
-                <div className="w-2 h-2 rounded-full bg-muted-foreground" />
-                <span className="font-mono-tech text-xs text-muted-foreground">ENCRYPTED</span>
-              </div>
+              <button className="bg-white font-semibold px-6 py-2.5 rounded text-sm transition-all duration-200 hover:bg-yellow-50"
+                style={{ color: 'hsl(276 72% 35%)' }}>
+                Apply Now
+              </button>
+              <button className="border border-white/60 text-white font-semibold px-6 py-2.5 rounded text-sm hover:bg-white/10 transition-all duration-200">
+                Know More
+              </button>
             </div>
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+          {/* Stats */}
+          <div className="grid grid-cols-2 gap-4">
+            {STATS.map((s, i) => (
+              <div key={i} className="bg-white/10 backdrop-blur rounded-lg p-5 text-center border border-white/20">
+                <div className="font-college-heading text-3xl font-bold text-white">{s.value}</div>
+                <div className="text-white/70 text-sm mt-1">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <main className="max-w-7xl mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+          {/* Left — Main */}
+          <div className="lg:col-span-2 space-y-8">
+
+            {/* Welcome */}
+            <section className="college-card p-6">
+              <h2 className="section-label">Welcome to IIST Indore</h2>
+              <p className="text-foreground/80 text-sm leading-relaxed mb-3">
+                Indian Institute of Information Science & Technology (IIST), Indore is committed to academic excellence and holistic student development. Our institution combines rigorous academics with cutting-edge research and industry collaboration.
+              </p>
+              <p className="text-foreground/80 text-sm leading-relaxed">
+                With a dedicated faculty, modern laboratories, and a vibrant campus life, IIST Indore offers an unparalleled educational experience that prepares graduates for global careers and responsible citizenship.
+              </p>
+              <div className="mt-4 p-4 rounded-lg border-l-4 text-sm italic text-foreground/70"
+                style={{ borderColor: 'hsl(276 72% 35%)', background: 'hsl(276 30% 97%)' }}>
+                "Education is not the filling of a pail, but the lighting of a fire." — William Butler Yeats
+              </div>
+            </section>
+
+            {/* Programs */}
+            <section className="college-card p-6">
+              <h2 className="section-label">Academic Programs</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {PROGRAMS.map((p, i) => (
+                  <div key={i} className="border border-border rounded-lg p-4 hover:border-primary/50 hover:shadow-sm transition-all duration-200 cursor-pointer">
+                    <h3 className="font-semibold text-sm mb-1" style={{ color: 'hsl(276 72% 35%)' }}>{p.name}</h3>
+                    <div className="text-xs text-muted-foreground flex gap-3">
+                      <span>⏱ {p.duration}</span>
+                      <span>👥 {p.seats} Seats</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <a href="#" className="inline-block mt-4 text-sm font-semibold hover:underline" style={{ color: 'hsl(276 72% 35%)' }}>
+                View All Programs →
+              </a>
+            </section>
+
+            {/* Events */}
+            <section className="college-card p-6">
+              <h2 className="section-label">Upcoming Events</h2>
+              <div className="space-y-3">
+                {[
+                  { date: "Mar 15", title: "TECHNOVA 2025 — Annual Tech Fest", type: "Event" },
+                  { date: "Mar 22", title: "Campus Placement Drive — TCS, Infosys, Wipro", type: "Placement" },
+                  { date: "Apr 05", title: "International Research Symposium", type: "Academic" },
+                  { date: "Apr 12", title: "Alumni Meet 2025 — Register Now", type: "Alumni" },
+                ].map((ev, i) => (
+                  <div key={i} className="flex gap-4 items-start p-3 rounded-lg hover:bg-muted/50 transition-colors">
+                    <div className="flex-shrink-0 w-12 text-center rounded-lg p-2 text-white text-xs font-bold"
+                      style={{ background: 'hsl(276 72% 35%)' }}>
+                      {ev.date.split(" ")[0]}<br />{ev.date.split(" ")[1]}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{ev.title}</p>
+                      <span className="tag-chip mt-1 inline-block">{ev.type}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          {/* Right Sidebar */}
+          <aside className="space-y-6">
+
+            {/* AI Assistant CTA */}
+            <div className="rounded-lg p-5 text-white text-center"
+              style={{ background: 'hsl(276 72% 35%)' }}>
+              <div className="text-3xl mb-2">🤖</div>
+              <h3 className="font-college-heading font-bold text-base mb-1">JARVIS AI Assistant</h3>
+              <p className="text-white/80 text-xs mb-3">Get instant answers about admissions, courses, campus life, and more.</p>
               <button
                 onClick={() => {
                   const el = document.querySelector('.n8n-chat-toggle') as HTMLButtonElement;
                   if (el) el.click();
                 }}
-                className="group relative font-orbitron text-sm font-semibold px-8 py-4 rounded overflow-hidden transition-all duration-300"
-                style={{
-                  background: 'linear-gradient(90deg, hsl(188 100% 50%), hsl(200 100% 60%))',
-                  color: 'hsl(220 40% 4%)',
-                  boxShadow: '0 0 20px hsl(188 100% 50% / 0.4)',
-                }}>
-                <span className="relative z-10 tracking-widest">ACTIVATE JARVIS</span>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity"
-                  style={{ background: 'white' }} />
-              </button>
-              <button
-                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                className="font-orbitron text-sm font-medium px-8 py-4 rounded border border-primary/40 text-primary hover:border-primary hover:bg-primary/5 transition-all duration-300 tracking-widest">
-                LEARN MORE
+                className="bg-white font-bold text-xs px-5 py-2 rounded transition-all duration-200 hover:bg-yellow-50 w-full"
+                style={{ color: 'hsl(276 72% 35%)' }}
+              >
+                Chat with JARVIS
               </button>
             </div>
-          </div>
 
-          {/* Right — Jarvis Ring */}
-          <div className="flex justify-center items-center">
-            <JarvisRing />
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Grid */}
-      <section id="about" className="relative z-10 max-w-7xl mx-auto px-6 py-16">
-        <div className="mb-10 flex items-center gap-4">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
-          <h2 className="font-orbitron text-xl text-primary tracking-widest glow-text">SYSTEM SPECS</h2>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/30" />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {STATS.map((stat, i) => (
-            <StatCard key={i} {...stat} />
-          ))}
-        </div>
-      </section>
-
-      {/* Capabilities */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 py-16">
-        <div className="mb-10 flex items-center gap-4">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
-          <h2 className="font-orbitron text-xl text-primary tracking-widest glow-text">CAPABILITIES</h2>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/30" />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {CAPABILITIES.map((cap, i) => (
-            <div key={i} className="glass-card rounded-lg p-6 space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="font-orbitron text-sm text-foreground/80 tracking-wide">{cap.label}</span>
-                <span className="font-mono-tech text-primary text-sm">{cap.level}%</span>
-              </div>
-              <div className="w-full h-1 rounded-full bg-muted overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-all duration-1000"
-                  style={{
-                    width: `${cap.level}%`,
-                    background: 'linear-gradient(90deg, hsl(188 100% 50%), hsl(200 100% 60%))',
-                    boxShadow: '0 0 8px hsl(188 100% 50% / 0.6)',
-                  }}
-                />
-              </div>
+            {/* Recent Posts */}
+            <div className="college-card p-5">
+              <h3 className="section-label">Recent Posts</h3>
+              <ul className="space-y-3">
+                {RECENT_POSTS.map((post, i) => (
+                  <li key={i} className="flex gap-2 items-start">
+                    <span className="news-bullet" />
+                    <a href="#" className="text-sm text-foreground/80 hover:text-primary hover:underline leading-snug transition-colors">
+                      {post}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
+
+            {/* Quick Links */}
+            <div className="college-card p-5">
+              <h3 className="section-label">Quick Links</h3>
+              <ul className="space-y-1">
+                {QUICK_LINKS.map((link, i) => (
+                  <li key={i}>
+                    <a
+                      href="#"
+                      className="flex items-center gap-2 text-sm py-1.5 hover:text-primary transition-colors text-foreground/80"
+                    >
+                      <span style={{ color: 'hsl(276 72% 35%)' }}>›</span>
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Notice board */}
+            <div className="college-card p-5">
+              <h3 className="section-label">Notice Board</h3>
+              <ul className="space-y-2">
+                {[
+                  "Mid-Semester Exam Schedule Released",
+                  "Scholarship Applications — Last Date: March 30",
+                  "Library Closed on March 20 (Holiday)",
+                  "Guest Lecture by Dr. Sharma — March 18",
+                ].map((notice, i) => (
+                  <li key={i} className="flex gap-2 items-start text-sm text-foreground/80 border-b border-border pb-2 last:border-0 last:pb-0">
+                    <span className="flex-shrink-0 mt-1 text-yellow-500">📌</span>
+                    <span className="leading-snug">{notice}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
         </div>
-      </section>
+      </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-primary/20 py-8 mt-8"
-        style={{ background: 'hsl(220 40% 4% / 0.9)' }}>
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-5 h-5 rounded-full border border-primary/60 flex items-center justify-center">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            </div>
-            <span className="font-orbitron text-primary text-sm glow-text">JARVIS</span>
+      <footer className="mt-12 text-white" style={{ background: 'hsl(276 72% 20%)' }}>
+        <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h4 className="font-college-heading font-bold text-base mb-3">IIST Indore</h4>
+            <p className="text-white/70 text-sm leading-relaxed">
+              Dedicated to academic excellence, innovation, and producing industry-ready professionals since 2005.
+            </p>
           </div>
-          <div className="font-mono-tech text-xs text-muted-foreground">
-            PERSONAL AGENT // ALL SYSTEMS NOMINAL // {new Date().getFullYear()}
+          <div>
+            <h4 className="font-college-heading font-bold text-base mb-3">Contact Us</h4>
+            <ul className="space-y-1 text-white/70 text-sm">
+              <li>📍 Scheme 74-C, Vijay Nagar, Indore — 452010</li>
+              <li>📞 +91-731-XXXXXXXX</li>
+              <li>✉ info@iist.ac.in</li>
+              <li>🌐 www.iist.ac.in</li>
+            </ul>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="font-mono-tech text-xs text-primary">ONLINE</span>
+          <div>
+            <h4 className="font-college-heading font-bold text-base mb-3">Important Links</h4>
+            <ul className="space-y-1 text-white/70 text-sm">
+              {["AICTE", "RGPV University", "UGC", "NAAC", "Ministry of Education"].map((l) => (
+                <li key={l}><a href="#" className="hover:text-yellow-400 transition-colors">› {l}</a></li>
+              ))}
+            </ul>
           </div>
+        </div>
+        <div className="border-t border-white/20 py-4">
+          <p className="text-center text-white/50 text-xs">
+            © {new Date().getFullYear()} Indian Institute of Information Science & Technology, Indore. All Rights Reserved.
+          </p>
         </div>
       </footer>
 
